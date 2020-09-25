@@ -15,13 +15,11 @@ int space_char(char c)
 {
   if (c == '\t' || c == ' ')
     {
-      printf("True\n");
-      return 1;
+      return 1; //True
     }
   else
     {
-      printf("False\n");
-      return 0;
+      return 0; //False
     }
 }
   
@@ -30,13 +28,11 @@ int non_space_char(char c)
 {
   if(c != '\t' && c!= ' ')
     {
-      printf("True\n");
-      return 1;
+      return 1; //True
     }
   else
     {
-      printf("False\n");
-      return 0;
+      return 0; //False
     }
 }
 
@@ -45,18 +41,22 @@ int non_space_char(char c)
 // points to the first character of a next word in a string
 //NOTE:* is the indirection or dereferencing operator
 //NOTE:& gives an objects address.Only applies to objects in memory:variables and array elem.
-char *word_start(char *str) 
+char *word_start(char *str)
 {
-  int i = 0; // start at index 0 of a word
-  while (space_char(str[i]) != 0) //while a character is a space character, check next character
+  int i = 0; //start at index 0 of a word
+  while (non_space_char(str[i]) != 1) //while character at index i is not a non whitespace
     {
-      i++;
+      i++; //check next character
     }
-  return &str[i]; //return the address of the start of a non space character
+  //printf("%c\n",str[i]); //uncomment to test
+  return &str[i];
 }
 
 //Returns a pointer terminator char following the end of a word(*word)
-char *word_terminator(char *word);
+char *word_terminator(char *word)
+{
+  
+}
 
 //Counts the number of words in the string argument
 int count_words(char *str);
