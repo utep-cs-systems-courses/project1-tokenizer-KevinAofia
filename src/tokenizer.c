@@ -3,15 +3,28 @@
 //Functions are defined here from the header file tokenizer.h
 //NOTE:Zero terminators are not printable (therefore false) */
 
+//Prints all options to the user
+void print_options()
+{
+  printf("1) I want to tokenize\n");
+  printf("2) Done tokenizing. ! EXIT ! \n");
+}
+
 //Return true(non-zero) if char c is a whitespace character('\t' or ' ' is a whitespace character)
 int space_char(char c)
 {
-  if (c == 1)
+  if (c == '\t' || c == ' ')
     {
-      printf("c is a whitespace character");
+      printf("True\n");
+      return 1;
+    }
+  else
+    {
+      printf("False\n");
+      return 0;
     }
 }
-
+  
 //Return true(non zero) if char c is not a whitespace character(aka non whitespace character)
 int non_space_char(char c);
 
@@ -37,7 +50,3 @@ void print_tokens(char **tokens);
 
 //Frees all tokens and the vector containing themx.
 void free_tokens(char **tokens);
-
-#endif
-
-
