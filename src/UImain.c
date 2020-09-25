@@ -9,8 +9,19 @@ int main()
   printf("\tReady to tokenize?\n");
   
   print_options();
-  scanf("%d" , &choice); //Read int number from user
 
-  int c = 'a';
-  space_char(c);
+  int a = '\t';
+  space_char(a);
+  
+  int b = 't';
+  non_space_char(b);
+  
+  char *c = "hi hey";
+  word_start(c);
+  
+  char *d = "hi ih";
+  *word_terminator(d);
+  
+  // char *e = 'My name is Kev';
+  //count_words(e);
 }
