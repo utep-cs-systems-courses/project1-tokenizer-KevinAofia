@@ -26,7 +26,19 @@ int space_char(char c)
 }
   
 //Return true(non zero) if char c is not a whitespace character(aka non whitespace character)
-int non_space_char(char c);
+int non_space_char(char c)
+{
+  if(c != '\t' && c!= ' ')
+    {
+      printf("True\n");
+      return 1;
+    }
+  else
+    {
+      printf("False\n");
+      return 0;
+    }
+}
 
 
 //Returns a pointer to the first non whitespace after a terminated word(aka return a pointer that
