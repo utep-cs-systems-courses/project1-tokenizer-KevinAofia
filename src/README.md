@@ -1,18 +1,21 @@
-Project 1: Tokenizer
-====================
-////////////////////////////////////////////////
-# Instructions:
+Lab Project 1: Building a tokenizer
 
-You should document your tokenizer in this file.
+# Summary of lab:
 
-This file is written in the refreshingly simple `markdown` text
-formatting language.
+Using the skills we have learned we will practice by:
 
-To learn about text formatting using markdown, we encourage you to examine 
- - [../README.md](../README.md)
- - the online [Markdown Guide](https://www.markdownguide.org/).
+      - using command line tools (cp,mv,mkdir,cd,emacs,make,git and other need
+      commands) in program development under bash.
 
-////////////////////////////////////////////////
-NOTES:
+      - Developing and debugging C programs that include, pointer arithmetic, dynamic
+      memory allocation as well as using malloc/calloc/free.
+
+      - create mulitple source files (headers with declarations), and working
+      with linked lists data structures inC.
+
+      - Designing a comprehensive small program in C language.
+
+NOTES:Always include the header file that declares something in the C file
+that defines it. This makes sure that the declaration and definition are always in-sync.
 
 
