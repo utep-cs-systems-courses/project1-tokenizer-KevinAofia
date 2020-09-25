@@ -43,7 +43,17 @@ int non_space_char(char c)
 
 //Returns a pointer to the first non whitespace after a terminated word(aka return a pointer that
 // points to the first character of a next word in a string
-char word_start(char *str); 
+//NOTE:* is the indirection or dereferencing operator
+//NOTE:& gives an objects address.Only applies to objects in memory:variables and array elem.
+char *word_start(char *str) 
+{
+  int i = 0; // start at index 0 of a word
+  while (space_char(str[i]) != 0) //while a character is a space character, check next character
+    {
+      i++;
+    }
+  return &str[i]; //return the address of the start of a non space character
+}
 
 //Returns a pointer terminator char following the end of a word(*word)
 char *word_terminator(char *word);
