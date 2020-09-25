@@ -26,7 +26,7 @@ int space_char(char c)
 //Return true(non zero) if char c is not a whitespace character(aka non whitespace character)
 int non_space_char(char c)
 {
-  if(c != '\t' && c!= ' ')
+  if(c != '\t' && c != ' ')
     {
       return 1; //True
     }
@@ -65,8 +65,19 @@ char *word_terminator(char *word)
 //Counts the number of words in the string argument
 int count_words(char *str)
 {
-  return 0;
+  int count = 1;
+  char *p1 = word_start(str);
+  char *p2 = word_terminator(p1);
+  //printf(p2);
+  while(p2[0] != '\0')
+    {
+      count++;
+      p1 = word_start(p2);
+      p2 = word_terminator(p1);
+    }
+  return count;
 }
+
 //Returns a fresly allocated new zero-terminated string containing,<len> chars from <inStr>
 char *copy_str(char *inStr, short len);
 
