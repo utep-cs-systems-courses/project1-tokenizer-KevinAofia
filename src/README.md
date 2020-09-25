@@ -15,6 +15,14 @@ Using the skills we have learned we will practice by:
 
 NOTES:Always include the header file that declares something in the C file
 that defines it. This makes sure that the declaration and definition are always in-sync.
+
+Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered
+HTML5 Markdown editor.
+  - ype some Markdown on the left
+  - TML in the right
+  - c
+  -
+
 Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered
 HTML5 Markdown editor.
   - Type some Markdown on the left
