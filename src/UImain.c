@@ -6,8 +6,8 @@ int main()
   print_options();
   char test1 = '\0';
   char test2 = ' ';
-  char *test3 = "Hello";
-  char *test4 = "So long world";
+  char *test3 = "Hello to all.";
+  char *test4 = "My name is Kev.";
 
   //printf("Test 1: %d :\n", space_char(test1));
   //printf("Test 2: %d :\n", non_space_char(test2));
