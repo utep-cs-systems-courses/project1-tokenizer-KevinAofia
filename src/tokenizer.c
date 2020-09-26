@@ -23,7 +23,7 @@ int space_char(char c)
 //Return true(non zero) if char c is not a whitespace character(aka non whitespace character)
 int non_space_char(char c)
 {
-  if (space_char(c) == 0 && c != '\0')    { //if space_char(c) is false
+  if ( (space_char(c) == 0) && c != '\0')  { //if space_char(c) is false
     return 1; //non_space_char is true since conditions in space_char failed
   }
   return 0; //must be a whitespace character
@@ -33,22 +33,22 @@ int non_space_char(char c)
 char *word_start(char *str)
 {
   char *temp = str;
-  while(space_char(*temp)) {
-    printf("should not print");
+  while(space_char(*temp) == 1) {
+    printf("NextCharS: %c \n",*temp);
     temp++;
   }
-  return temp;
+  return *&temp;
 }
 
 //Returns a pointer terminator char following the end of a word(*word)
 char *word_terminator(char *word)
 {
   char *temp = word;
-  while(non_space_char(*temp)) {
-    printf("here:%c\n", *temp);
+  while(non_space_char(*temp) == 1) {
+    printf("NextCharE: %c \n", *temp);
     temp++;
   }
-  return temp;
+  return *&temp;
 }
   
 //Counts the number of words in the string argument
@@ -56,10 +56,21 @@ int count_words(char *str)
 {
   int count = 0;
   char *temp = str;
-  char term = *word_terminator(temp);
-  if (term == '\0') {
-    count ++ ;
-    return count;
+  
+  char *startingPtr = word_start(temp);
+  char *endingPtr = word_terminator(temp);
+
+  char startingC = *startingPtr; 
+  char endingC = *endingPtr;
+
+  startingPtr = word_start(endingPtr);
+
+  while (non_space_char(startingC) == 1) {
+    count++;
+    endingC = '\0'; //test case
+    if ( endingC == '\0' ) {
+      break;
+    }
   }
   return count;
 }
