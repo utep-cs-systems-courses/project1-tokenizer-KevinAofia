@@ -56,23 +56,22 @@ int count_words(char *str)
 {
   int count = 0;
   char *temp = str;
-  
   char *startingPtr = word_start(temp);
   char *endingPtr = word_terminator(temp);
-
   char startingC = *startingPtr; 
   char endingC = *endingPtr;
-
-  startingPtr = word_start(endingPtr);
-
-  while (non_space_char(startingC) == 1) {
-    count++;
-    endingC = '\0'; //test case
-    if ( endingC == '\0' ) {
-      break;
+ 
+  while (non_space_char(startingC)) { //if the starting char is a char
+    count++; //we know that there is at least one/another word
+    if ( endingC == '\0' ) { //if the word ends in a term char
+      return count; //return the current count
     }
+    startingPtr = word_start(endingPtr); //update starting * to point at next starting c
+    startingC = *startingPtr; //update starting c with the new value at starting *
+    endingPtr = word_terminator(startingPtr);//update ending * to the point to next ending c
+    endingC = *endingPtr;//update ending c with new value at ending *
   }
-  return count;
+  return 0; //Return 0 if count_words fails
 }
 
 //Returns a fresly allocated new zero-terminated string containing,<len> chars from <inStr>
