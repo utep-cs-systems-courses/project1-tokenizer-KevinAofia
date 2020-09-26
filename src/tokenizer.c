@@ -14,7 +14,7 @@ void print_options()
 //Return true(non-zero) if char c is a whitespace character('\t' or ' ' is a whitespace character)
 int space_char(char c)
 {
-  if (c == '\t' || c == ' ') {
+  if ( (c == '\t' || c == ' ') && c != '\0') {
     return 1; //True
   }
   else {
@@ -25,7 +25,7 @@ int space_char(char c)
 //Return true(non zero) if char c is not a whitespace character(aka non whitespace character)
 int non_space_char(char c)
 {
-  if(c != '\t' && c != ' ') {
+  if ( (c != '\t' && c != ' ') && c != '\0') {
     return 1; //True
   }
   else {
@@ -62,14 +62,19 @@ int count_words(char *str)
   int count = 0;
   char *p1 = word_start(str);
   char *p2 = word_terminator(p1);
-  
-  while(non_space_char(*p1) == 1){
+  while (non_space_char(*p1) == 1) {
     count++;
-    p2 = word_terminator(p1);
-    if ((*p2) == '\0'){
-      break;
-    }
     p1 = word_start(p2);
+    p2 = word_terminator(p1);
+    printf("p1 is here: %c :\n",p1[0]);
+    printf("p2 is here: %c :\n",p2);
+    if ((*p2) == '\0') {
+      printf("FINALLY\n");
+    }
+    if (count == 5) {
+      printf("BAD PLACE\n");
+      return count;
+    }
   }
   return count;
 }
