@@ -77,13 +77,13 @@ int count_words(char *str)
 //Returns a freshly allocated new zero-terminated string containing,<len> chars from <inStr>
 char *copy_str(char *inStr, short len)
 {
-  char *copy = malloc( (len + 1) * sizeof(char));
-  int i =0;
-  while (i < len) {
-    copy[i] = inStr[i];
-    i++;
+  char *copy = malloc( (len + 1) * sizeof(char)); //allocate space and + 1 for \0 character 
+  int i = 0;
+  while (i < len) { //while index is less than length of passed array
+    copy[i] = inStr[i]; //this is equivalent to saying *copy = *inStr
+    i++; //increment index for next character in string
   }
-  copy[i+1] = '\0';
+  copy[i+1] = '\0'; //set next address value to terminating character
   return copy;
 }
 //Returns a freshly allocated zero terminated vector of freshly allocated space-separated tokens
