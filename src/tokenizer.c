@@ -75,8 +75,11 @@ int count_words(char *str)
 }
 
 //Returns a fresly allocated new zero-terminated string containing,<len> chars from <inStr>
-char *copy_str(char *inStr, short len);
-
+char *copy_str(char *inStr, short len)
+{
+  inStr = malloc(len * sizeof(char));
+  return inStr;
+}
 //Returns a freshly allocated zero terminated vector of freshly allocated space-separated tokens
 char **tokenize(char* str);
 
