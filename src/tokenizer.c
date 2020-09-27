@@ -74,13 +74,16 @@ int count_words(char *str)
   return 0; //Return 0 if count_words fails
 }
 
-//Returns a fresly allocated new zero-terminated string containing,<len> chars from <inStr>
+//Returns a freshly allocated new zero-terminated string containing,<len> chars from <inStr>
 char *copy_str(char *inStr, short len)
 {
-  char *copy = malloc( (len + 1) * sizeof(char)); //allocate space based on number of character
-  for (int i = 0; i < len; i++) {
-    *(copy+i) = *(inStr+i);
+  char *copy = malloc( (len + 1) * sizeof(char));
+  int i =0;
+  while (i < len) {
+    copy[i] = inStr[i];
+    i++;
   }
+  copy[i+1] = '\0';
   return copy;
 }
 //Returns a freshly allocated zero terminated vector of freshly allocated space-separated tokens

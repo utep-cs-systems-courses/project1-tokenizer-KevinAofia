@@ -2,12 +2,8 @@
 #include <stdlib.h>
 #include "tokenizer.h"
 
-#define MAXLIMIT 280 //max string limit is array of length 1000
-
 int main()
 {
-  char userInput[MAXLIMIT]; //char *userInput
-
   print_options();
   
   /*char test1 = '\0';
@@ -20,16 +16,23 @@ int main()
   printf("Test 4: %c :\n", *word_terminator(test4)); //returns an address, so need to dereference
   printf("Test 5a: %d :\n", count_words(test3));
   printf("Test 5b: %d :\n", count_words(test4));*/
-  char *copy;
+  
+  char input[240];
+  char c;
   int i = 0;
-  int c;
-  while (c = getchar() != '\n') { //read chars until reach a \n
-    userInput[i] = c;
-    i++ ;
-  };
-  *(userInput+1) = '\0'; //add terminating char
-  printf("%d\n",i);
-
-  copy = copy_str(userInput,i+1); //update length
-  printf("copied %s\n", copy);
+  c = getchar();
+  while (c != '\n') {
+    input[i] = c;
+    c = getchar();
+    i++;
+  }
+  char *copied;
+  copied = copy_str(input,i);
+  printf("Copied: %s\n", copied);
+  //while(*copied != '\0') {
+  //  printf("character in array: %c \n", *copied);
+  //  copied++;
+  //}
+  
 }
+
