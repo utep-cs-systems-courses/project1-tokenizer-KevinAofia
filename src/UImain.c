@@ -16,8 +16,7 @@ int main()
   printf("Test 4: %c :\n", *word_terminator(test4)); //returns an address, so need to dereference
   printf("Test 5a: %d :\n", count_words(test3));
   printf("Test 5b: %d :\n", count_words(test4));*/
-  
-  char input[240];
+  char input[1000];
   char c;
   int i = 0;
   c = getchar();
@@ -26,13 +25,22 @@ int main()
     c = getchar();
     i++;
   }
+  
   char *copied;
   copied = copy_str(input,i);
+
   printf("Copied: %s\n", copied);
-  //while(*copied != '\0') {
-  //  printf("character in array: %c \n", *copied);
-  //  copied++;
-  //}
+  /*
+  while(*copied != '\0') {
+    printf("character in array: %c \n", *copied);
+    copied++;
+  }
+  */
+  char **pw = tokenize(copied);
+  print_tokens(pw);
+  free_tokens(pw);
+  print_tokens(pw);
+
   
 }
 
