@@ -94,7 +94,6 @@ char **tokenize(char *str) {
   char **tokens = malloc( (wordCount + 1) * sizeof(char*));
   char *startingPtr = word_start(str);
   char *endingPtr = word_terminator(str);
-  //char startingC = *startingP;
   
   int i = 0;
   while (i < wordCount ) { //not to exceed number of words
@@ -105,9 +104,6 @@ char **tokenize(char *str) {
   }
   tokens[i+1] = '\0'; //put term character in last array
   printf("Done\n");
-  //printf("L: %d\n", length);
-  //printf("start: %c\n", *startingC);
-  //printf("end: %c\n", *endingC);
   return tokens;
 }
 
@@ -127,9 +123,9 @@ void free_tokens(char **tokens)
 {
   int i = 0;
   while(tokens[i] != NULL) {
-    free(tokens[i]);
+    free(tokens[i]); //free what the pointer is pointing too
     i++;
   }
-  free(tokens);
+  free(tokens); //free our pointer itself
   printf("All tokens are freed.\n");
 }
