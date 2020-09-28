@@ -8,8 +8,10 @@
 //Prints all options to the user
 void print_options()
 {
-  printf("1) Tokenize\n");
-  printf("2) Exit\n");
+  printf("\t1) Tokenize\n");
+  printf("\t2) Print all the history\n");
+  printf("\t3) Recall an item in history\n");
+  printf("\t4) Exit\n");
 }
 
 //Return true(non-zero) if char c is a whitespace character('\t' or ' ' is a whitespace character)
@@ -103,7 +105,7 @@ char **tokenize(char *str) {
     i++;
   }
   tokens[i+1] = '\0'; //put term character in last array
-  printf("Done\n");
+  //printf("Done\n");
   return tokens;
 }
 
