@@ -115,17 +115,13 @@ void print_tokens(char **tokens)
     printf("Token %d: \"%s\" \n",i, tokens[i]);
     i++;
   }
+  printf("Token %d: %d \n",i, tokens[i]); //terminating int value is 0 or string value null
   printf("All tokens are printed.\n");
 }
 
 //Frees all tokens and the vector containing themx.
 void free_tokens(char **tokens)
 {
-  int i = 0;
-  while(tokens[i] != NULL) {
-    free(tokens[i]); //free what the pointer is pointing too
-    i++;
-  }
-  free(tokens); //free our pointer itself
+  free(tokens); //free the heap memory
   printf("All tokens are freed.\n");
 }
