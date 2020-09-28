@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "tokenizer.h" 
+#include "tokenizer.h"
+
 //Functions are defined here from the header file tokenizer.h
 //NOTE:Zero terminators are not printable (therefore false) */
 
 //Prints all options to the user
 void print_options()
 {
-  printf("1) I want to tokenize\n");
-  printf("2) EXIT\n");
+  printf("1) Tokenize\n");
+  printf("2) Exit\n");
 }
 
 //Return true(non-zero) if char c is a whitespace character('\t' or ' ' is a whitespace character)
@@ -77,7 +78,7 @@ int count_words(char *str)
 //Returns a freshly allocated new zero-terminated string containing,<len> chars from <inStr>
 char *copy_str(char *inStr, short len)
 {
-  char *copy = malloc( (len + 1) * sizeof(char)); //allocate space and + 1 for \0 character 
+  char *copy = malloc( (len + 1) * sizeof(char)); //allocate memory (add 1 for \0 character) 
   int i = 0;
   while (i < len) { //while index is less than length of passed array
     copy[i] = inStr[i]; //this is equivalent to saying *copy = *inStr
@@ -86,11 +87,49 @@ char *copy_str(char *inStr, short len)
   copy[i+1] = '\0'; //set next address value to terminating character
   return copy;
 }
+
 //Returns a freshly allocated zero terminated vector of freshly allocated space-separated tokens
-char **tokenize(char* str);
+char **tokenize(char *str) {
+  int wordCount = count_words(str);
+  char **tokens = malloc( (wordCount + 1) * sizeof(char*));
+  char *startingPtr = word_start(str);
+  char *endingPtr = word_terminator(str);
+  //char startingC = *startingP;
+  
+  int i = 0;
+  while (i < wordCount ) { //not to exceed number of words
+    tokens[i] = copy_str( startingPtr , endingPtr - startingPtr ); //string pointer/len of word
+    startingPtr = word_start(endingPtr);
+    endingPtr = word_terminator(startingPtr);
+    i++;
+  }
+  tokens[i+1] = '\0'; //put term character in last array
+  printf("Done\n");
+  //printf("L: %d\n", length);
+  //printf("start: %c\n", *startingC);
+  //printf("end: %c\n", *endingC);
+  return tokens;
+}
 
 // Prints all tokens.
-void print_tokens(char **tokens);
+void print_tokens(char **tokens)
+{
+  int i = 0;
+  while(tokens[i] != NULL) {
+    printf("Token %d: \"%s\" \n",i, tokens[i]);
+    i++;
+  }
+  printf("All tokens are printed.\n");
+}
 
 //Frees all tokens and the vector containing themx.
-void free_tokens(char **tokens);
+void free_tokens(char **tokens)
+{
+  int i = 0;
+  while(tokens[i] != NULL) {
+    free(tokens[i]);
+    i++;
+  }
+  free(tokens);
+  printf("All tokens are freed.\n");
+}
