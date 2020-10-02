@@ -4,15 +4,15 @@
 typedef struct s_Item {
   int id;
   char *str;
-  struct s_Item *next;
-} Item;
+  struct s_Item *next; //will point to the next struct in our linked list Item
+} Item; //struct shortened to just Item
 
 typedef struct s_List {
-  struct s_Item *root;
+  struct s_Item *root; //points to a struct Item
 } List;
 
 /* Initialize the linked list to keep the history. */
-List* init_history();
+List * init_history();
 
 /* Add a history item to the end of the list.
    List* list - the linked list
@@ -25,10 +25,10 @@ void add_history(List *list, char *str);
    int id - the id of the Item to find */
 char *get_history(List *list, int id);
 
-/ *Print the entire contents of the list. */
+//Print the entire contents of the list
 void print_history(List *list);
 
-/ *Free the history list and the strings it references. */
+/*Free the history list and the strings it references.*/
 void free_history(List *list);
 
 #endif

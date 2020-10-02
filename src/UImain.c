@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tokenizer.h"
+#include "history.h"
 
 int main()
 {
@@ -9,10 +10,13 @@ int main()
   char temp;
   int num;
   int i = 0;
+  
   char *copied;
   char *bool = "True";
   char **tokenized;
 
+  List *list;
+  
   while(bool != "False") {
 
     printf("Please select an option below (1-4) :\n");
@@ -32,6 +36,9 @@ int main()
 	i++;
       }
       copied = copy_str(input,i);
+      //////////////////////////////
+      //add_history(list,copied);
+      //////////////////////////////
       tokenized = tokenize(copied);
       print_tokens(tokenized);
       free_tokens(tokenized);
@@ -39,10 +46,12 @@ int main()
     }
     else if (num == 2) {
       printf("Showing history\n");
+      //print_history(list)
       break;
     }
     else if (num == 3) {
       printf("Recall an item\n");
+      //get_history(list,id);
       break;
     }
     else if (num == 4) {
