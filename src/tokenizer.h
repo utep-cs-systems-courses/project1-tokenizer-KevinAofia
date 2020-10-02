@@ -1,9 +1,6 @@
 #ifndef _TOKENIZER_
 #define _TOKENIZER_
 
-//Prints all options out the user
-void print_options();
-
 /* Return true (non-zero) if c is a whitespace characer
    ('\t' or ' ').  
    Zero terminators are not printable (therefore false) */

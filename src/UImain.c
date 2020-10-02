@@ -4,54 +4,55 @@
 
 int main()
 {
-  /*
-  char test1 = '\0';
-  char test2 = ' ';
-  char *test3 = "Hello to all.";
-  char *test4 = "My name is Kev.";
-  printf("Test 1: %d :\n", space_char(test1));
-  printf("Test 2: %d :\n", non_space_char(test2));
-  printf("Test 3: %c :\n", *word_start(test3)); //return an address, so need to dereference
-  printf("Test 4: %c :\n", *word_terminator(test4)); //returns an address, so need to dereference
-  printf("Test 5a: %d :\n", count_words(test3));
-  printf("Test 5b: %d :\n", count_words(test4));
-  char input[1000];
-  char c;
-  int i = 0;
-  c = getchar();
-  while (c != '\n') {
-    input[i] = c;
-    c = getchar();
-    i++;
-  }
-  char *copied;
-  copied = copy_str(input,i);
-  printf("Copied: %s\n", copied);
-  char **tester = tokenize(copied);
-  print_tokens(tester);
-  free_tokens(tester);
-  print_tokens(tester);
-  */
-
   char input[240];
   char c;
+  char temp;
   int num;
   int i = 0;
   char *copied;
-  
-  printf("Please select an option:\n");
-  print_options();
-  printf("Tokenizing > ");
-  c = getchar();
-  while (c != '\n') {
-    input[i] = c;
-    c = getchar();
-    i++;
-  }
-  printf("\n");
-  copied = copy_str(input,i);
-  char **tokenized = tokenize(copied);
-  print_tokens(tokenized);
-  free_tokens(tokenized);
-}
+  char *bool = "True";
+  char **tokenized;
 
+  while(bool != "False") {
+
+    printf("Please select an option below (1-4) :\n");
+    printf("1)Tokenize\n");
+    printf("2)Show History\n");
+    printf("3)Recall Item\n");
+    printf("4)Exit\n"); 
+    scanf("%d",&num);
+    scanf("%c",&temp); //scan null char from prev scan
+
+    if (num == 1) {
+      printf("Tokenizing >>> ");
+      c = getchar();
+      while (c != '\n') {
+	input[i] = c;
+	c = getchar();
+	i++;
+      }
+      copied = copy_str(input,i);
+      tokenized = tokenize(copied);
+      print_tokens(tokenized);
+      free_tokens(tokenized);
+      printf("\n");
+    }
+    else if (num == 2) {
+      printf("Showing history\n");
+      break;
+    }
+    else if (num == 3) {
+      printf("Recall an item\n");
+      break;
+    }
+    else if (num == 4) {
+      printf("Exiting\n");
+      bool = "False";
+      exit(0);
+    }
+    else {
+      printf("Not a valid option....Try again\n");
+    }
+  }
+  return 0;
+}

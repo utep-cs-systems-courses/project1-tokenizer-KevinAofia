@@ -5,19 +5,10 @@
 //Functions are defined here from the header file tokenizer.h
 //NOTE:Zero terminators are not printable (therefore false) */
 
-//Prints all options to the user
-void print_options()
-{
-  printf("\t1) Tokenize\n");
-  printf("\t2) Print all the history\n");
-  printf("\t3) Recall an item in history\n");
-  printf("\t4) Exit\n");
-}
-
 //Return true(non-zero) if char c is a whitespace character('\t' or ' ' is a whitespace character)
 int space_char(char c)
 {
-  if (c == ' ' || c == '\t') { //if c is a whitespace character
+  if (c == ' ' || c == '\t' || c == '\n') { //if c is a whitespace character
     return 1;
   }
   return 0;
@@ -118,12 +109,20 @@ void print_tokens(char **tokens)
     i++;
   }
   printf("Token %d: %d \n",i, tokens[i]); //terminating int value is 0 or string value null
+  
   printf("All tokens are printed.\n");
 }
 
 //Frees all tokens and the vector containing themx.
 void free_tokens(char **tokens)
 {
-  free(tokens); //free the heap memory
+  /*
+  int i = 0;
+  while(tokens[i] != NULL) {
+    free(tokens[i]); //free the heap memory
+    i++;
+  }
+  */
+  free(tokens);
   printf("All tokens are freed.\n");
 }
