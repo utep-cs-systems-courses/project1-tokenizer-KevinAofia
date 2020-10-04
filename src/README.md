@@ -15,7 +15,3 @@ Using the skills we have learned we will practice by:
 > more notes
 
 This is an example *written* using markdown.
-
-### Next topic if any
->//NOTE:* is the indirection or dereferencing operator
-//NOTE:& gives an objects address.Only applies to objects in memory:variables and array elem
