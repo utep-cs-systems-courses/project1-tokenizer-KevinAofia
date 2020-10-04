@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "tokenizer.h"
 #include "history.h"
 
@@ -15,7 +16,7 @@ int main()
   char *bool = "True";
   char **tokenized;
 
-  List *list;
+  List *history = init_history();
   
   while(bool != "False") {
 
@@ -26,7 +27,6 @@ int main()
     printf("4)Exit\n"); 
     scanf("%d",&num);
     scanf("%c",&temp); //scan null char from prev scan
-
     if (num == 1) {
       printf("Tokenizing >>> ");
       c = getchar();
@@ -36,9 +36,7 @@ int main()
 	i++;
       }
       copied = copy_str(input,i);
-      //////////////////////////////
-      //add_history(list,copied);
-      //////////////////////////////
+      i = 0; // resetting index for next input(if any)
       tokenized = tokenize(copied);
       print_tokens(tokenized);
       free_tokens(tokenized);
@@ -46,13 +44,11 @@ int main()
     }
     else if (num == 2) {
       printf("Showing history\n");
-      //print_history(list)
-      break;
+      print_history(history);
     }
     else if (num == 3) {
       printf("Recall an item\n");
-      //get_history(list,id);
-      break;
+      //get_history(history,id);
     }
     else if (num == 4) {
       printf("Exiting\n");
