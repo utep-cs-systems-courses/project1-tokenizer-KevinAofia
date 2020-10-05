@@ -36,6 +36,7 @@ int main()
 	i++;
       }
       copied = copy_str(input,i);
+      add_history(history,copied);
       i = 0; // resetting index for next input(if any)
       tokenized = tokenize(copied);
       print_tokens(tokenized);
